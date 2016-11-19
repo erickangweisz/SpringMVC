@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+
+	<annotation-driven ignore-default-model-on-redirect="true" />
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
+	<!-- Se usa para añadir los mensajes de errores y validaciones en un archivo 
+		.properties -->
+	<beans:bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<beans:property name="basename">
+			<beans:value>playermessages</beans:value>
+		</beans:property>
+		<!-- Utilizar solo mientras se esta desarrollando la aplicacion y nunca 
+			cuando se haya terminado -->
+		<beans:property name="cacheSeconds">
+			<beans:value>1</beans:value>
+		</beans:property>
+	</beans:bean>
+
+	<!-- Bean para cargar ficheros -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</beans:bean>
+
+	<!-- Conexion a postgres -->
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<beans:property name="driverClassName" value="org.postgresql.Driver" />
+		<beans:property name="url"
+			value="jdbc:postgresql://localhost:5432/gestion" />
+		<beans:property name="username" value="postgres" />
+		<beans:property name="password" value="postgre_pass" />
+	</beans:bean>
+
+	<!-- Hibernate 4 SessionFactory Bean definition -->
+	<beans:bean id="hibernate4AnnotatedSessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="annotatedClasses">
+			<beans:list>
+				<beans:value>
+					com.jonatan.tutorial.model.User
+				</beans:value>
+				<beans:value>
+					com.jonatan.tutorial.model.Provincia
+				</beans:value>
+			</beans:list>
+		</beans:property>
+		<beans:property name="hibernateProperties">
+			<beans:props>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect
+				</beans:prop>
+				<beans:prop key="hibernate.show_sql">
+					true
+				</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+
+	<!-- User -->
+	<beans:bean id="userDAO" class="com.jonatan.tutorial.dao.UserDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="userService" class="com.jonatan.tutorial.service.UserServiceImpl">
+		<beans:property name="userDAO" ref="userDAO">
+		</beans:property>
+	</beans:bean>
+	
+	<!-- Provincia -->
+	<beans:bean id="provinciaDAO" class="com.jonatan.tutorial.dao.ProvinciaDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="provinciaService" class="com.jonatan.tutorial.service.ProvinciaServiceImpl">
+		<beans:property name="provinciaDAO" ref="provinciaDAO">
+		</beans:property>
+	</beans:bean>
+
+	<context:component-scan base-package="com.spring.demo" />
+	<context:component-scan base-package="com.jonatan.tutorial" />
+	<context:component-scan base-package="com.jose.test" />
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<beans:bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<!-- Mapping webjars -->
+	<mvc:resources mapping="/webjars/**" location="/webjars/" />
+
+</beans:beans>

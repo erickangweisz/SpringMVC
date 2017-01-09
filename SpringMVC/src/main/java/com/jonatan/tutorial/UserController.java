@@ -70,7 +70,7 @@ public class UserController {
 	
 	@RequestMapping("/viewuser/{name}")
 	public ModelAndView viewUser(@PathVariable("name") String name) {
-		ModelAndView mav = new ModelAndView("userView");
+		ModelAndView mav = new ModelAndView("viewusers");
 		mav.addObject("user", this.userService.getUserByName(name));
 		
 		return mav;

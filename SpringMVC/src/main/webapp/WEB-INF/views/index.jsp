@@ -11,8 +11,7 @@
 		<br>
 		<div class="row">
 			<div class="col-md-6">
-				<a href="users">Usuarios con Hibernate</a><br>
-				<a href="provincias">Provincias con Hibernate</a>
+				<a href="users">Usuarios con Hibernate</a>
 			</div>
 		</div>
 	</div>

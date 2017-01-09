@@ -54,7 +54,7 @@
 		destroy-method="close">
 		<beans:property name="driverClassName" value="org.postgresql.Driver" />
 		<beans:property name="url"
-			value="jdbc:postgresql://localhost:5432/gestion" />
+			value="jdbc:postgresql://localhost:5432/jak_db" />
 		<beans:property name="username" value="postgres" />
 		<beans:property name="password" value="postgre_pass" />
 	</beans:bean>
@@ -67,9 +67,6 @@
 			<beans:list>
 				<beans:value>
 					com.jonatan.tutorial.model.User
-				</beans:value>
-				<beans:value>
-					com.jonatan.tutorial.model.Provincia
 				</beans:value>
 			</beans:list>
 		</beans:property>
@@ -86,27 +83,16 @@
 
 	<!-- User -->
 	<beans:bean id="userDAO" class="com.jonatan.tutorial.dao.UserDAOImpl">
-		<beans:property name="sessionFactory"
-			ref="hibernate4AnnotatedSessionFactory" />
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	<beans:bean id="userService" class="com.jonatan.tutorial.service.UserServiceImpl">
 		<beans:property name="userDAO" ref="userDAO">
 		</beans:property>
 	</beans:bean>
-	
-	<!-- Provincia -->
-	<beans:bean id="provinciaDAO" class="com.jonatan.tutorial.dao.ProvinciaDAOImpl">
-		<beans:property name="sessionFactory"
-			ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
-	<beans:bean id="provinciaService" class="com.jonatan.tutorial.service.ProvinciaServiceImpl">
-		<beans:property name="provinciaDAO" ref="provinciaDAO">
-		</beans:property>
-	</beans:bean>
 
 	<context:component-scan base-package="com.spring.demo" />
 	<context:component-scan base-package="com.jonatan.tutorial" />
-	<context:component-scan base-package="com.jose.test" />
+	<context:component-scan base-package="com.jonatan.test" />
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<tx:annotation-driven transaction-manager="transactionManager" />

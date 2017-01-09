@@ -8,10 +8,8 @@
 <title>List</title>
 </head>
 <body>
-
-	<c:forEach items="${users}" var="item">
-    <br><a href="user/${item.getName()}">${item.getName()}</a>
-	</c:forEach> <br>
-	Fecha: ${fecha}
+	<label>username</label> ${user.name} <br>
+	<label>password</label> ${user.password}<br>
+	<label>type</label> ${user.type}
 </body>
 </html>

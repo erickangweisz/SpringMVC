@@ -18,13 +18,13 @@
 					<td><form:label path="name">
 							Nombre
 						</form:label></td>
-					<td><form:input path="name" class="form-control"/></td>
+					<td><form:input path="name" class="form-control" required="true"/></td>
 				</tr>
 				<tr>
 					<td><form:label path="password">
 							Contraseña
 						</form:label></td>
-					<td><form:password path="password" class="form-control"/></td>
+					<td><form:password path="password" class="form-control" required="true"/></td>
 				</tr>
 				<tr>
 					<td><form:label path="type">

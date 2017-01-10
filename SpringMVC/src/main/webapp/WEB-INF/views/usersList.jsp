@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Users</title>
+	<%@ include file="/WEB-INF/views/include_bootstrap.jsp" %>
 </head>
 <body>
 	<div class="container">
@@ -24,7 +25,7 @@
 					<td><form:label path="password">
 							Contraseña
 						</form:label></td>
-					<td><form:password path="password" class="form-control" required="true"/></td>
+					<td><form:input path="password" class="form-control" required="true"/></td>
 				</tr>
 				<tr>
 					<td><form:label path="type">
@@ -38,10 +39,11 @@
 				</tr>
 				<tr>
 					<td colspan="2"><c:if test="${!empty user.name}">
-							<input type="submit" value="Editar Usuario" />
+						<input type="submit" value="Editar Usuario" />
 						</c:if> <c:if test="${empty user.name}"><br>
 							<input type="submit" class="btn btn-primary" value="Añadir Usuario" />
-						</c:if></td>
+						</c:if>
+					</td>
 				</tr>
 			</table>
 		</form:form>
@@ -69,7 +71,6 @@
 		</c:if>
 	</div>
 	
-	<!-- include bootstrap -->
-	<%@ include file="/WEB-INF/views/include_bootstrap.jsp" %>
+	
 </body>
 </html>

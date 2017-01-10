@@ -28,6 +28,7 @@ public class UserController {
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ModelAndView listUsers() {
 		ModelAndView mav = new ModelAndView("usersList");
+
 		mav.addObject("user", new User());
 		mav.addObject("userList", this.userService.listUsers());
 		
@@ -60,8 +61,8 @@ public class UserController {
 	}
 	
 	@RequestMapping("/edit/{name}")
-	public ModelAndView editUser(@PathVariable("name") String name) {
-		ModelAndView mav = new ModelAndView("redirect:/users");
+	public ModelAndView editUser(@PathVariable("name") String name){
+		ModelAndView mav = new ModelAndView("usersList");
 		mav.addObject("user", this.userService.getUserByName(name));
 		mav.addObject("userList", this.userService.listUsers());
 		

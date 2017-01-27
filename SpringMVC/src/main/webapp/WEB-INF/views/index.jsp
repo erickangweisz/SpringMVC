@@ -7,16 +7,18 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Home</h1>
 		<br>
+		<div class="jumbotron">
+			<h1>Home <small>${id_session}</small></h1>
+		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<a href="users">Usuarios con Hibernate</a>
+				<a href="users" class="btn btn-primary">Usuarios con Hibernate</a><br>
 			</div>
 		</div>
 	</div>
 	
 	<!-- include bootstrap -->
-	<%@ include file="/WEB-INF/views/include_bootstrap.jsp" %>
+	<%@ include file="/WEB-INF/views/templates/include_bootstrap.jsp" %>
 </body>
 </html>

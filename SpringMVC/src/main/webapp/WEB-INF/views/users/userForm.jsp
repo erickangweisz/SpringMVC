@@ -16,7 +16,12 @@
 			<br>
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h1 style="margin:0px; padding:0px;">Añadir Usuario:</h1>
+						<c:if test="${!isNew}">
+							<h1 style="margin:0px; padding:0px;">Editar Usuario:</h1>
+						</c:if>
+						<c:if test="${isNew}">
+							<h1 style="margin:0px; padding:0px;">Añadir Usuario:</h1>
+						</c:if>
 					</div>
 					<div class="panel-body">
 						<c:url var="addAction" value="/user/add"></c:url>
@@ -42,10 +47,10 @@
 								</tr>
 								<tr>
 									<td colspan="2">
-										<c:if test="${!empty user.name}"><br>
+										<c:if test="${!isNew}"><br>
 											<input type="submit" class="btn btn-success form-control" value="Editar Usuario" />
 										</c:if> 
-										<c:if test="${empty user.name}"><br>
+										<c:if test="${isNew}"><br>
 											<input type="submit" class="btn btn-success form-control" value="Añadir Usuario" />
 										</c:if>
 									</td>
@@ -54,6 +59,11 @@
 						</form:form>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-md-offset-3">
+				<a href="<c:url value="/users"/>" class="btn btn-default">Atrás</a>
 			</div>
 		</div>
 	</div>

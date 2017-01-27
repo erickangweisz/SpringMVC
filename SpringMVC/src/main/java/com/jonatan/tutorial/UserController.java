@@ -18,6 +18,7 @@ import com.jonatan.tutorial.service.UserService;
 public class UserController {
 
 	private UserService userService;
+	private boolean isNew;
 
 	@Autowired(required = true)
 	@Qualifier(value = "userService")
@@ -61,10 +62,12 @@ public class UserController {
 	}
 	
 	@RequestMapping("/edit/{name}")
-	public ModelAndView editUser(@PathVariable("name") String name){
+	public ModelAndView editUser(@PathVariable("name") String name) {
+		isNew = false;
 		ModelAndView mav = new ModelAndView("/users/userForm");
 		mav.addObject("user", this.userService.getUserByName(name));
 		mav.addObject("userList", this.userService.listUsers());
+		mav.addObject("isNew", isNew);
 		
 		return mav;
 	}
@@ -79,9 +82,11 @@ public class UserController {
 	
 	@RequestMapping("/newuser")
 	public ModelAndView newUser() {
+		isNew = true;
 		ModelAndView mav = new ModelAndView("/users/userForm");
 		User user = new User();
 		mav.addObject("user", user);
+		mav.addObject("isNew", isNew);
 		
 		return mav;
 	}

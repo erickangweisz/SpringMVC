@@ -62,7 +62,7 @@ public class UserController {
 	
 	@RequestMapping("/edit/{name}")
 	public ModelAndView editUser(@PathVariable("name") String name){
-		ModelAndView mav = new ModelAndView("/users/usersList");
+		ModelAndView mav = new ModelAndView("/users/userForm");
 		mav.addObject("user", this.userService.getUserByName(name));
 		mav.addObject("userList", this.userService.listUsers());
 		
@@ -73,6 +73,15 @@ public class UserController {
 	public ModelAndView viewUser(@PathVariable("name") String name) {
 		ModelAndView mav = new ModelAndView("/users/viewusers");
 		mav.addObject("user", this.userService.getUserByName(name));
+		
+		return mav;
+	}
+	
+	@RequestMapping("/newuser")
+	public ModelAndView newUser() {
+		ModelAndView mav = new ModelAndView("/users/userForm");
+		User user = new User();
+		mav.addObject("user", user);
 		
 		return mav;
 	}

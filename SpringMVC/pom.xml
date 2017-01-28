@@ -41,6 +41,19 @@
 			<version>9.3-1100-jdbc41</version>
 		</dependency>
 
+		<!-- fontawesome -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>fontawesome</artifactId>
+		    <version>4.7.0</version>
+		</dependency>
+		
+		<!-- DataTables -->
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>datatables</artifactId>
+			<version>1.10.11</version>
+		</dependency>
 
 		<!-- AspectJ -->
 		<dependency>

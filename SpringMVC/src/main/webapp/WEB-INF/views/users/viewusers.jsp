@@ -17,7 +17,7 @@
 			<div class="col-md-6 col-md-offset-3">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						
+						<h2 style="padding:0px; margin:0px;">VISTA USUARIO</h2>
 					</div>
 					<div class="panel-body">
 						<label>username</label> ${user.name} <br>
@@ -29,7 +29,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 col-md-offset-3">
-				<a href="<c:url value="/users"/>" class="btn btn-default">Atrás</a>
+				<a href="<c:url value="/users"/>" class="btn btn-default btn-sm"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Atrás</a>
 			</div>
 		</div>
 	</div>

@@ -13,7 +13,8 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<a href="users" class="btn btn-primary">Usuarios con Hibernate</a><br>
+				<a href="users" class="btn btn-primary">Usuarios con Hibernate</a><br><br>
+				<a href="xmlForm" class="btn btn-primary">Formulario XML</a><br>
 			</div>
 		</div>
 	</div>

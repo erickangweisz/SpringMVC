@@ -14,11 +14,29 @@
 </head>
 <body>
 	<div class="container">
+		<!-- modal delete confirm -->
+		<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                ...
+		            </div>
+		            <div class="modal-body">
+		                ...
+		            </div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		                <a class="btn btn-danger btn-ok">Delete</a>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	
 		<br>
 		<div class="row">
 			<div class="col-md-12">
 				<a href="<c:url value="/"/>" class="btn btn-default btn-sm"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Atrás</a>
-				<a href="<c:url value="/newuser"/>" class="btn btn-success btn-sm"><i class="fa fa-plus-circle" aria-hidden="true"></i> crear usuario</a>
+				<a href="<c:url value="/newuser"/>" class="btn btn-info btn-sm"><i class="fa fa-plus-circle" aria-hidden="true"></i> crear usuario</a>
 			</div>
 		</div>
 		
@@ -33,9 +51,9 @@
 								<th>Nombre</th>
 								<th>Contraseña</th>
 								<th>Permiso</th>
-								<th>Acción</th>
-								<th></th>
-								<th></th>
+								<th>Borrar</th>
+								<th>Editar</th>
+								<th>Ver</th>
 							</tr>
 						</thead>
 						<tbody>

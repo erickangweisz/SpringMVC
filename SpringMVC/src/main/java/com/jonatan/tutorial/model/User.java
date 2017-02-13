@@ -8,11 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="users")
+@XmlRootElement(name="user")
 @XmlAccessorType(XmlAccessType.NONE)
 @Entity
 @Table(name = "users")
@@ -29,7 +28,7 @@ public class User implements Serializable {
 	
 	public User() {}
 	
-	@XmlAttribute
+	@XmlElement
 	@Id
 	@Column(name = "name")
 	private String name;

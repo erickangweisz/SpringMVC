@@ -19,6 +19,12 @@
 					<input type="submit" value="Ver contenido" class="btn btn-success btn-xs">
 				</form:form>
 				<br>
+				Cargar users.xml para persistir en bd: <br>
+				<form:form action="xmlReaderUsers"  method="post" enctype="multipart/form-data">
+					<input type="file" name="xmlUserFile"/>
+					<input type="submit" value="Ver contenido" class="btn btn-success btn-xs">
+				</form:form>
+				<br>
 				Introducir url para cargar: <br>
 				<form action="xmlReaderWebService" method="post">
 					<input type="text" name="xmlURL"/><br>

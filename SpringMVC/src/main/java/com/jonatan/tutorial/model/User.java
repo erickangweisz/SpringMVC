@@ -1,21 +1,44 @@
 package com.jonatan.tutorial.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name="users")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
+	public User(String name, String password, String type) {
+		super();
+		this.name = name;
+		this.password = password;
+		this.type = type;
+	}
+	
+	public User() {}
+	
+	@XmlAttribute
 	@Id
 	@Column(name = "name")
 	private String name;
 	
+	@XmlElement
 	@Column(name = "password")
 	private String password;
 	
+	@XmlElement
 	@Column(name = "type")
 	private String type;
 
